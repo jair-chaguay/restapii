@@ -7,7 +7,7 @@ const swaggerAutogen = require('swagger-autogen')()
    },
    "host": 'restapii-kr7x.onrender.com',
    "schemes": [
-     "https"
+     "http"
    ],
    "basePath": "/api",
  };
