@@ -3,6 +3,9 @@ require('dotenv').config()
  const express = require('express');
  const bodyParser = require('body-parser');
  const admin = require('firebase-admin');
+ const swaggerUi = require('swagger-ui-express')
+ const swaggerFile = require('./swagger_output.json')
+
  const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_API)
 
  admin.initializeApp({
@@ -13,6 +16,9 @@ require('dotenv').config()
  app.use(bodyParser.json());
 
  const PORT = process.env.PORT || 5000;
+
+ app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
  app.use('/api', require('./routes/api'));
 
  app.listen(PORT, () => {
